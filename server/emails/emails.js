@@ -28,3 +28,37 @@ exports.getinboxmailsforuser = async(req,res)=>{
         return;
     }
 }
+
+exports.updatemail = (req,res)=>{
+    const emailUid = req.body.emailuid && req.body.emailuid || null;
+
+    if(!req.body.emailuid){
+        res.json({status: 500, error: "Invalid Data"});
+        return;
+    }
+
+    let  = {};
+
+    if(req.body.markasstarred){
+        updateObject.isstarred = true
+    }
+    if(req.body.markasimportant){
+        updateObject.isimportant = true
+    }
+    if(req.body.markasviewed){
+        updateObject.isviewed = true
+    }
+    if(req.body.markasdeleted){
+        upupdateObjectdateObject.isactive = false
+    }
+
+    Email.findByIdAndUpdate(emailUid,updateObject,(err,data)=>{
+        if(err){
+            res.json({status: 500, error: "Error while updating the mail"});
+            return;
+        }else{
+            res.json({status: 200, data: {}});
+            return;
+        }
+    })
+}

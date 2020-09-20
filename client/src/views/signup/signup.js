@@ -8,19 +8,19 @@ import { ROUTEPATH } from '../../common/appConstants'
 
 function SignUp(props){
 
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setlastName] = useState('');
-    const [userName, setUserName] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+    let [firstName, setFirstName] = useState('');
+    let [lastName, setlastName] = useState('');
+    let [userName, setUserName] = useState('');
+    let [password, setPassword] = useState('');
+    let [confirmPassword, setConfirmPassword] = useState('');
 
     function inputChange(value, type) {
         if (type == 'username') {
             setUserName(value)
         } else if(type == 'firstname') {
-            setPassword(value)
+            setFirstName(value)
         }else if(type == 'lastname') {
-            setPassword(value)
+            setlastName(value)
         }else if(type == 'password') {
             setPassword(value)
         } else if(type == 'confirmpassword') {
@@ -31,14 +31,14 @@ function SignUp(props){
     function registerUser(){
         if(!userName || !firstName || !lastName || !password){
             alert("All fields must be entered");
+            return;
         }
-        if((password).toString() === (confirmPassword).toString()){
+        if((password).toString() !== (confirmPassword).toString()){
             alert("password does not match with the confirm password entered")
+            return;
         }
         userName = userName + "@mail.com"
-
         
-
     }
 
     function goToLogin() {
@@ -83,7 +83,7 @@ function SignUp(props){
                                 </div>
                             </div>
                             <div className="lastDiv">
-                                <div class="d-flex justify-content-around">
+                                <div className="d-flex justify-content-around">
                                     <div>
                                         <h6 className="createAccText"><a onClick={() => goToLogin()}>Sign in instead</a></h6>
                                     </div>
