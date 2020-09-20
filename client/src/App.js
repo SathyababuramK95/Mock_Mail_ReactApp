@@ -3,6 +3,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { ROUTEPATH } from './common/appConstants';
 import Login from './views/login/login';
 import SignUp from './views/signup/signup';
+import Dashboard from './views/dashboard/dashboard';
 import './App.css';
 
 function App(props) {
@@ -21,6 +22,7 @@ function App(props) {
             <Route exact path={ROUTEPATH.LOGIN} component={Login} />
             <Route exact path={ROUTEPATH.INDEX} component={Login} />
             <Route exact path={ROUTEPATH.SIGNUP} component={SignUp} />
+            <Route exact path={ROUTEPATH.DASHBOARD} component={Dashboard} />
         </Switch>
       </BrowserRouter>
     </div>
